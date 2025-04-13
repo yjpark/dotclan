@@ -9,7 +9,7 @@
       clan = clan-core.clanLib.buildClan {
         inherit self;
         # Ensure this is unique among all clans you want to use.
-        meta.name = "__CHANGE_ME__";
+        meta.name = "yjpark";
 
         # All machines in ./machines will be imported.
 

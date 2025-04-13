@@ -6,3 +6,6 @@ install-nix:
 
 install-clan:
     nix shell git+https://git.clan.lol/clan/clan-core#clan-cli --refresh
+
+list-disks:
+    lsblk --output NAME,ID-LINK,FSTYPE,SIZE,MOUNTPOINT
