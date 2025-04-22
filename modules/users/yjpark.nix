@@ -1,29 +1,40 @@
 { config, clan-core, ... }:
 {
   imports = [
-    # Enables the OpenSSH server for remote access
-    clan-core.clanModules.sshd
-    # Set a root password
-    clan-core.clanModules.root-password
     clan-core.clanModules.user-password
-    clan-core.clanModules.state-version
   ];
 
-  # Locale service discovery and mDNS
-  services.avahi.enable = true;
+  programs.fish.enable = true;
 
   # generate a random password for our user below
   # can be read using `clan secrets get <machine-name>-user-password` command
   clan.user-password.user = "yjpark";
   users.users.yjpark = {
     isNormalUser = true;
+    uid = 1000;
+    description = "YJ Park";
+    home = "/home/yjpark";
+    shell = "/run/current-system/sw/bin/fish";
     extraGroups = [
       "wheel"
       "networkmanager"
       "video"
       "input"
+      "podman"
+      "disk"
+      "systemd-journal"
     ];
-    uid = 1000;
     openssh.authorizedKeys.keys = config.users.users.root.openssh.authorizedKeys.keys;
   };
+
+  security.sudo.extraConfig = ''
+    yjpark  ALL=(ALL) NOPASSWD: ALL
+
+    Defaults env_keep += "http_proxy"
+    Defaults env_keep += "https_proxy"
+    Defaults env_keep += "all_proxy"
+    Defaults env_keep += "NIX_CURL_FLAGS"
+  '';
+
+  nix.settings.trusted-users = [ "root" "yjpark" ];
 }
