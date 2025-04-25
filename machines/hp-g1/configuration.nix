@@ -9,7 +9,7 @@
   ];
 
   # This is your user login name.
-  users.users.user.name = "yjpark";
+  # users.users.user.name = "yjpark";
 
   # Set this for clan commands use ssh i.e. `clan machines update`
   # If you change the hostname, you need to update this line to root@<new-hostname>
