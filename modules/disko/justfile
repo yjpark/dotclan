@@ -1,0 +1,10 @@
+# https://github.com/nix-community/disko-templates
+
+fetch-single-disk-ext4:
+    nix flake init --template github:nix-community/disko-templates#single-disk-ext4
+    mv -v disko-config.nix single-disk-ext4.nix
+
+fetch-zfs-impermanence:
+    nix flake init --template github:nix-community/disko-templates#zfs-impermanence
+    mv -v disko-config.nix zfs-impermanence.nix
+
