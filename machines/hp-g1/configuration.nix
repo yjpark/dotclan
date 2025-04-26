@@ -1,7 +1,7 @@
 {
   imports = [
     # contains your disk format and partitioning configuration.
-    ../../modules/disko/single.nix
+    ../../modules/disko/zfs-impermanence.nix
     # this file is shared among all machines
     ../../modules/common.nix
     # enables GNOME desktop (optional)
